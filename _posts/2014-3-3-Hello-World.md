@@ -17,5 +17,18 @@ Let's look at some examples to understand the concept better. Imagine you want t
 
 In more technical terms, few-shot learning involves training a model on a small number of labeled examples (or "shots") of each task or class. The model is then tested on a set of novel tasks or classes, each with only a few examples, to evaluate its ability to generalize.
 
+### Language models and Prompt engineering
+Have you ever talked to a computer? You might be thinking, "Wait, computers can't talk, can they?" But what if I told you that there are machines out there that can communicate with humans just like we do with each other? These machines are called language models, and they are taking the world by storm.
+
+Language models are trained on vast amounts of text data, such as books, articles, and websites. They learn the rules of grammar, syntax, and semantics from this data and use it to generate human-like text. It's like teaching a machine how to speak our language by exposing it to millions of examples of how we use words and sentences.
+
+One of the most famous language models out there is called GPT-3. It's like a super-smart computer that can write essays, answer questions, and even write code. But here's the catch: it needs to be told what to write about. That's where prompt engineering comes in.
+
+Prompt engineering is like giving GPT-3 a topic to write about and some examples to learn from. For example, if we want GPT-3 to write a recipe for chocolate cake, we might give it some examples of other chocolate cake recipes, along with some keywords and phrases like "mix the flour and sugar" or "bake at 350 degrees." GPT-3 can then use this information to generate its own unique recipe for chocolate cake.
+
+Here is one example of few shot learning, where we have given task description, some examples and finally a prompt the model needs to complete.
+
+![Few shot learning]({{site.baseurl}}/_posts/fewshot.png)
+
 
 
