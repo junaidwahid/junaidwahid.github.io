@@ -18,7 +18,7 @@ Let's look at some examples to understand the concept better. Imagine you want t
 In more technical terms, few-shot learning involves training a model on a small number of labeled examples (or "shots") of each task or class. The model is then tested on a set of novel tasks or classes, each with only a few examples, to evaluate its ability to generalize.
 
 ### Language models and Prompt engineering
-Have you ever talked to a computer? You might be thinking, "Wait, computers can't talk, can they?" But what if I told you that there are machines out there that can communicate with humans just like we do with each other? These machines are called language models, and they are taking the world by storm.
+Have you ever talked to a computer? You might be thinking, "Wait, computers can't talk, can they?" But what if I told you that there are machines out there that can communicate with humans just like we do with each other? These machines are called language models, and they are taking the world by storm and one of the example is indeed ChatGPT.
 
 Language models are trained on vast amounts of text data, such as books, articles, and websites. They learn the rules of grammar, syntax, and semantics from this data and use it to generate human-like text. It's like teaching a machine how to speak our language by exposing it to millions of examples of how we use words and sentences.
 
@@ -29,6 +29,30 @@ Prompt engineering is like giving GPT-3 a topic to write about and some examples
 Here is one example of few shot learning, where we have given task description, some examples and finally a prompt the model needs to complete.
 
 ![Few shot learning]({{site.baseurl}}/_posts/fewshot.png)
+
+
+### True Few shot learning
+Now that we've covered the basics of language models, let's dive into what true few-shot learning really means. Previous research has classified few-shot learning into three different categories (see Table 3). The first is the Data-Rich setting, which is essentially a supervised learning pipeline where we have access to a large amount of training and validation examples. The second is the Multi-Distribution setting, where we have access to a small dataset of many similar distributions. The last category is the Tuned Few-shot setting, where we have access to a large validation set that we can use to fine-tune our task.
+
+But, wait a minute... if we go back to our earlier definition of few-shot learning, can we really call these methods "few-shot learning"? The answer is no. That's where true few-shot learning comes in! We don't need many similar small datasets from other distributions, nor do we need a large training or validation set. All we need are just a few examples to perform your desired task, my friend!
+![true]({{site.baseurl}}/_posts/true.png)
+
+
+Well you might be thinking, that you came here find out about problems few shot learning and I am just strecthing the topic without going discussion about the problem. Well, Similar to “Attention is all you need” ,I would just say “More readind is what you need right now 🙂” .
+Before discussing the problems, we have to formalize few shot learning and the method to select models . Lets first describe how we actually formaizlie the model selection in the few shot learning setting. As usual , we split out dataset into training and validation set. We used our training dataset to train a Algorithm “A”  and we also consider other random factors like network initialization or order of training example, we covered these factors under the umbrella of random factors “R”. To achieve generalization or better performance, we want the validation loss to be which is a expecte(mean) loss on many folds, similarly to k-fold. 
+
+![mode selection ]({{site.baseurl}}/_posts/model_selection.png)
+
+We can perform this experiment with two model selection criteria: cross validation and minimum description length. The former is known to many people so i will spare the detail while later is commonly used for model selection but still less known. Minimum Description length, MDL is a criterion used for model selection based on the trade-off between the model's complexity and its ability to fit the data. The goal of MDL is to find the simplest model that can effectively represent the data.
+In the MDL formula you provided, the expectation is taken over the possible values of k, which determines the split between the training and validation sets.Lets understand the MDL using this pseudo code.
+Divide the dataset into k folds.
+Used 1-k for training and kth fold for testing
+Repeat the process for all k
+
+In order words, we want to encode the information with less number of bits as possible so more compress models actually leads to better generalization and hence a better model.
+
+
+
 
 
 
