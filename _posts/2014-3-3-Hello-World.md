@@ -56,7 +56,21 @@ When using MDL, we take an expectation over the possible values of "k", which de
 
 In simpler terms, we want to encode information using as few bits as possible. Therefore, models that are more compressible generally lead to better generalization and, in turn, better models.
 
+## Problems with Few Shot Learning
 
+Although models like GPT-3 and other big language models are impressive, every good thing comes with a hidden cost. Few-shot learning seems like the ultimate solution to the problem of limited data in everyday machine learning pipelines, but it has underlying issues that need to be reviewed. Recently, a paper by Nitin published in NeuralIPS has explored the problems of few-shot learning. I highly encourage you to read that paper after this blog to gain a deeper understanding. In the upcoming sections, we will discuss the problems mentioned in the paper and how much they can affect the model's performance. The meme below provides a summary of what we will be discussing!
+
+![problems]({{site.baseurl}}/_posts/american-chopper-argument (1).png)
+
+### How well does prompt selection do in true few-shot learning?
+
+When it comes to training language models with limited data, prompt selection is a crucial factor for achieving good performance. The right prompt can provide the model with more context and help it generate better results. However, in the case of true few-shot learning, where the amount of data is severely limited, prompt selection becomes even more important.
+
+In the mentioned paper, researchers have explored different techniques to evaluate the effectiveness of prompt selection. They found that, on average, test accuracy of prompts chosen by cross-validation (CV) and minimum description length (MDL) were very far from the best prompt.  Even when comparing the results of a selected prompt to the average of some random prompts, the accuracy was not significant in most cases. This pattern was consistent across all model sizes.
+
+They further studied the accuray of choosing of best prompt. The results were not different than test accuracy. They faced the same fate and number of times models chose the best was significantly low. 
+
+**What does this mean?** First, we should not expect to always get the best prompt or even a prompt that is close to its performance. Second, these results suggest that previous studies may have overestimated the performance of few-shot learning.
 
 
 
