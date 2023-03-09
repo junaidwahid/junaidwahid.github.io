@@ -32,24 +32,29 @@ Here is one example of few shot learning, where we have given task description, 
 
 
 ### True Few shot learning
-Now that we've covered the basics of language models, let's dive into what true few-shot learning really means. Previous research has classified few-shot learning into three different categories (see Table 3). The first is the Data-Rich setting, which is essentially a supervised learning pipeline where we have access to a large amount of training and validation examples. The second is the Multi-Distribution setting, where we have access to a small dataset of many similar distributions. The last category is the Tuned Few-shot setting, where we have access to a large validation set that we can use to fine-tune our task.
+Now that we've covered the basics of language models, let's dive into what true few-shot learning really means(yes there is difference between few shot learning and "true" few shot learning"). Previous research has classified few-shot learning into three different categories (see Table 3). The first is the Data-Rich setting, which is essentially a supervised learning pipeline where we have access to a large amount of training and validation examples. The second is the Multi-Distribution setting, where we have access to a small dataset of many similar distributions. The last category is the Tuned Few-shot setting, where we have access to a large validation set that we can use to fine-tune our task.
 
-But, wait a minute... if we go back to our earlier definition of few-shot learning, can we really call these methods "few-shot learning"? The answer is no. That's where true few-shot learning comes in! We don't need many similar small datasets from other distributions, nor do we need a large training or validation set. All we need are just a few examples to perform your desired task, my friend!
+But, wait a minute... if we go back to our earlier definition of few-shot learning, can we really call these methods "few-shot learning"? The answer is no. That's where true few-shot learning comes in! We don't need many similar small datasets from other distributions, nor do we need a large training or validation set. All we need are just a few examples to perform the desired task!
 ![true]({{site.baseurl}}/_posts/true.png)
 
 
-Well you might be thinking, that you came here find out about problems few shot learning and I am just strecthing the topic without going discussion about the problem. Well, Similar to “Attention is all you need” ,I would just say “More readind is what you need right now 🙂” .
-Before discussing the problems, we have to formalize few shot learning and the method to select models . Lets first describe how we actually formaizlie the model selection in the few shot learning setting. As usual , we split out dataset into training and validation set. We used our training dataset to train a Algorithm “A”  and we also consider other random factors like network initialization or order of training example, we covered these factors under the umbrella of random factors “R”. To achieve generalization or better performance, we want the validation loss to be which is a expecte(mean) loss on many folds, similarly to k-fold. 
+You might be wondering why I haven't started discussing the problems of few-shot learning yet. Don't worry, I'm not avoiding the topic. Similar to the phrase "Attention is all you need", I would like to say that "More reading is what you need right now".
+
+Before we delve into the issues, let's first define few-shot learning and the method we use to choose models. To do this, we divide our dataset into a training set and a validation set. We use the training set to train an algorithm called "A" while considering random factors like network initialization or the order of training examples. We refer to these factors as "R". In order to achieve better performance, we aim for the validation loss to be low, which is the expected mean loss on multiple folds, similar to k-fold.
 
 ![mode selection ]({{site.baseurl}}/_posts/model_selection.png)
 
-We can perform this experiment with two model selection criteria: cross validation and minimum description length. The former is known to many people so i will spare the detail while later is commonly used for model selection but still less known. Minimum Description length, MDL is a criterion used for model selection based on the trade-off between the model's complexity and its ability to fit the data. The goal of MDL is to find the simplest model that can effectively represent the data.
-In the MDL formula you provided, the expectation is taken over the possible values of k, which determines the split between the training and validation sets.Lets understand the MDL using this pseudo code.
-Divide the dataset into k folds.
-Used 1-k for training and kth fold for testing
-Repeat the process for all k
+There are two ways to perform few-shot learning: cross-validation and minimum description length. The former is well-known, so I won't go into detail, but the latter is also commonly used for model selection despite being less well-known.
 
-In order words, we want to encode the information with less number of bits as possible so more compress models actually leads to better generalization and hence a better model.
+Minimum Description Length, or MDL, is a criterion used for model selection that balances the model's complexity with its ability to fit the data. The aim of MDL is to find the simplest model that can accurately represent the data.
+
+When using MDL, we take an expectation over the possible values of "k", which determines how the dataset is split between the training and validation sets. Here's a pseudo code to understand MDL better:
+
+	1. Divide the dataset into "k" folds.
+	2. Use "k"th fold for testing and the rest for training.
+	3. Repeat the process for all "k".
+
+In simpler terms, we want to encode information using as few bits as possible. Therefore, models that are more compressible generally lead to better generalization and, in turn, better models.
 
 
 
