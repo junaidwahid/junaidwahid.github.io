@@ -73,5 +73,17 @@ They further studied the accuray of choosing of best prompt. The results were no
 **What does this mean?** First, we should not expect to always get the best prompt or even a prompt that is close to its performance. Second, these results suggest that previous studies may have overestimated the performance of few-shot learning.
 
 
+## How reliably does prompt selection improve over the average prompt?
+If the expected improvement from prompt selection is small, can we at least obtain an improvement with high probability for any given task and training set? The goal of this question is to avoid the selection of worst prompt, that actually has low performance in comparison to average of some random prompts. Though, we saw expectation of getting better performance over average random prompts were not great. But, if somehow we managed to avoid the selection of worst prompt, then will also be an improvement. 
+
+Their analysis revealed that CV/MDL-chosen prompts showed high variance in test accuracy relative to the average prompt, and for most model sizes, the chance of improving over the average, randomly-chosen prompt was only 56% for CV and 55% for MDL. The authors noted that the performance of prompt selection formed a long-tailed distribution, with a 27% chance that prompt selection would cause an accuracy drop of 13% for all model sizes and CV/MDL alike. Additionally, the tails grew heavier as model size increased, indicating that the ability to reliably choose good prompts degraded as models grew bigger and generalized better. The surprising finding was dropping of the model accuracy by 40% with 5% probability. These number disclosed the earlier overestimation in the area of few shot learning thats has been relied blindly over the years with little focus on its performance on actual true few shot learning setting.
+
+**What could be the possible explanation for these results?** One possible explanation for this trend is that larger models have the capacity to draw more complex decision boundaries, requiring more examples to estimate the true expected loss on unseen examples. Therefore, scaling validation sets along with model size may be necessary. Overall, the limited average-case gains from prompt selection could not be expected with any reasonable confidence in the true few-shot setting, and this problem would only become worse with larger models.
+
+
+
+
+
+
 
 
