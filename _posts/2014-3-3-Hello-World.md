@@ -4,9 +4,11 @@ title: You're up and running!
 published: true
 ---
 
-It seems that the word "ChatGpt" is on everyone's lips these days, no matter where you go or who you talk to. But before we get carried away with all the hype, let's take a closer look at some of the challenges that come with these fancy language models. Don't worry if none of this makes sense at first - I'll be your trusty navigator and guide you through the murky waters of machine learning.
+It seems that the word "ChatGpt" is on everyone's lips these days, no matter where you go or who you talk to. But before we get carried away with all the hype, let's take a closer look at some of the challenges that come with these fancy language models. Don't worry if none of this makes sense at first - I'll be your trusty navigator and guide you through the murky waters of language model problems
 
-Today, we will start a journey towards a difficult type of learning called "few-shot learning". It's like an island that most people avoid because it's very challenging. However, I will lead the way and guide us through the obstacles.
+In this article, we will begin by providing a basic understanding of few-shot learning, and explore some of the challenges that arise in this domain. It is important to note that a prerequisite for reading this article is a fundamental understanding of machine learning concepts and a willingness to explore new ideas.
+
+By the end of this article, readers will have a deeper understanding of the unique challenges posed by few-shot learning, and the potential applications of this technology. We hope this article will serve as a useful guide for those interested in exploring this fascinating field.
 
 ### Few Shot learning
 Traditional machine learning models often require large amounts of labeled data to achieve high performance on a given task, such as sentiment analysis or named entity recognition. However, collecting such large amounts of labeled data can be difficult or even impossible, especially for low-resource languages or domains.
@@ -68,7 +70,7 @@ When it comes to training language models with limited data, prompt selection is
 
 In the mentioned paper, researchers have explored different techniques to evaluate the effectiveness of prompt selection. They found that, on average, test accuracy of prompts chosen by cross-validation (CV) and minimum description length (MDL) were very far from the best prompt.  Even when comparing the results of a selected prompt to the average of some random prompts, the accuracy was not significant in most cases. This pattern was consistent across all model sizes.
 
-They further studied the accuray of choosing of best prompt. The results were not different than test accuracy. They faced the same fate and number of times models chose the best was significantly low. 
+They further studied the accuray of choosing of best prompt. The results were not different and they faced the same fate and number of times models chose the best was significantly low. 
 
 **What does this mean?** First, we should not expect to always get the best prompt or even a prompt that is close to its performance. Second, these results suggest that previous studies may have overestimated the performance of few-shot learning.
 
@@ -125,10 +127,3 @@ Here are some takeaways from this blog:
 6.The prompts are model-specific, and prompt selection methods did not perform well across models.
 
 7.The findings suggest that prompt selection is a challenging problem that needs more attention and research to improve its performance.
-
-
-
-
-
-
-
