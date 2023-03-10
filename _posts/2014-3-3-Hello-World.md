@@ -62,7 +62,7 @@ Although models like GPT-3 and other big language models are impressive, every g
 
 ![problems]({{site.baseurl}}/_posts/american-chopper-argument (1).png)
 
-### How well does prompt selection do in true few-shot learning?
+### 1. How well does prompt selection do in true few-shot learning?
 
 When it comes to training language models with limited data, prompt selection is a crucial factor for achieving good performance. The right prompt can provide the model with more context and help it generate better results. However, in the case of true few-shot learning, where the amount of data is severely limited, prompt selection becomes even more important.
 
@@ -73,15 +73,27 @@ They further studied the accuray of choosing of best prompt. The results were no
 **What does this mean?** First, we should not expect to always get the best prompt or even a prompt that is close to its performance. Second, these results suggest that previous studies may have overestimated the performance of few-shot learning.
 
 
-## How reliably does prompt selection improve over the average prompt?
+### 2. How reliably does prompt selection improve over the average prompt?
 If the expected improvement from prompt selection is small, can we at least obtain an improvement with high probability for any given task and training set? The goal of this question is to avoid the selection of worst prompt, that actually has low performance in comparison to average of some random prompts. Though, we saw expectation of getting better performance over average random prompts were not great. But, if somehow we managed to avoid the selection of worst prompt, then will also be an improvement. 
 
 Their analysis revealed that CV/MDL-chosen prompts showed high variance in test accuracy relative to the average prompt, and for most model sizes, the chance of improving over the average, randomly-chosen prompt was only 56% for CV and 55% for MDL. The authors noted that the performance of prompt selection formed a long-tailed distribution, with a 27% chance that prompt selection would cause an accuracy drop of 13% for all model sizes and CV/MDL alike. Additionally, the tails grew heavier as model size increased, indicating that the ability to reliably choose good prompts degraded as models grew bigger and generalized better. The surprising finding was dropping of the model accuracy by 40% with 5% probability. These number disclosed the earlier overestimation in the area of few shot learning thats has been relied blindly over the years with little focus on its performance on actual true few shot learning setting.
 
 **What could be the possible explanation for these results?** One possible explanation for this trend is that larger models have the capacity to draw more complex decision boundaries, requiring more examples to estimate the true expected loss on unseen examples. Therefore, scaling validation sets along with model size may be necessary. Overall, the limited average-case gains from prompt selection could not be expected with any reasonable confidence in the true few-shot setting, and this problem would only become worse with larger models.
 
+### 3. Does prompt selection improve with more labeled examples?
+One can argue, that may be increasing the number of data examples may increase the performance and that argument makes sense as it is evident even in case of supervised learning. To test the argument,the paper replicated the experiment with different amount of data in increasing order and examined how well prompt selection methods performance. They also tested whether increasing the amount of compute (i.e., the amount of computational resources used) would improve prompt selection performance.
 
+**Does it increase the performance?** Surprisingly, even with more labeled examples, prompt selection methods did not consistently perform better than simply choosing examples based on few examples. Additionally, increasing the amount of compute used to estimate the performance of different prompts did not improve the accuracy of prompt selection beyond a certain point.These findings are surprising because prompt design has been thought to be most promising in the true few-shot setting, where there is very little labeled data available. However, these results suggest that prompt selection is still difficult even with more labeled data, greatly undermining the potential value of prompts in the true few-shot setting.
 
+### 3. To what extent are chosen prompts specific to the model?
+
+When it comes to language modeling tasks, one of the most critical things is choosing the right prompts. But how do we know if the prompts we choose are specific to the model we're using, or if they can be used for other models too? That's was one the experiment of the paper.
+
+The researchers used something called prompt transfer to test whether the prompts chosen using cross-validation/minimum description length (CV/MDL) techniques were tailored to specific models or not. Prompt transfer involves using a prompt chosen for one model to make predictions using another model. The accuracy of these predictions is then evaluated to determine whether the prompts are working well or not.
+
+**So what did the study find?** Well, it turns out that prompts chosen based on test accuracy tend to work well for models of similar sizes. However, when using CV and MDL-selected prompts, things can get a little trickier. In fact, the researchers found that these prompts tend to underperform when compared to the best prompts and don't consistently improve accuracy across different tasks and model sizes.
+
+**What does this mean for practitioners?** Essentially, it suggests that prompts selected using CV/MDL techniques may not be tailored to individual models, and may not be the best prompts to use for NLP tasks. Instead, it's important to choose prompts that are specifically designed for the model you're using, or to consider other techniques for prompt selection. By doing so, we can ensure that our  models are as accurate and effective as possible.
 
 
 
