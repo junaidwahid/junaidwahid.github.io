@@ -95,6 +95,14 @@ The researchers used something called prompt transfer to test whether the prompt
 
 **What does this mean for practitioners?** Essentially, it suggests that prompts selected using CV/MDL techniques may not be tailored to individual models, and may not be the best prompts to use for NLP tasks. Instead, it's important to choose prompts that are specifically designed for the model you're using, or to consider other techniques for prompt selection. By doing so, we can ensure that our  models are as accurate and effective as possible.
 
+### 4.Is prompt selection challenging on other tasks?
+
+Choosing the right prompts is crucial for natural language processing (NLP) tasks, but is it equally challenging for all tasks? A recent study sought to answer this question by investigating the effectiveness of prompt selection on three different NLP tasks: Recognizing Textual Entailment (RTE), CommitmentBank (CB), and Word-in-Context (WiC). The authors used prompts chosen by cross-validation (CV), minimum description length (MDL), and test accuracy to evaluate the accuracy of the models.
+
+**What did the study find about the effectiveness of prompt selection?** The study found that the results were similar to their findings on the LAMA task, where CV/MDL-chosen prompts tended to obtain lower average accuracy than those chosen based on test accuracy. This trend was consistent across all tasks and model sizes, even when selecting fewer prompts. Additionally, the accuracy of CV/MDL-chosen prompts varied widely across tasks and model sizes, often resulting in worse-than-average prompts. To further examine the variance in chosen prompt accuracy, the authors calculated the chance that prompt selection would obtain various accuracy gains over the average prompt. They found that the accuracy gains were highly dispersed, often negative, and not consistently achieved. Overall, the study concludes that prompt selection is challenging in general, and the earlier findings on LAMA tasks apply to other kinds of tasks as well.
+
+
+
 
 
 
