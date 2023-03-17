@@ -43,13 +43,11 @@ But, wait a minute... if we go back to our earlier definition of few-shot learni
 ![true](https://raw.githubusercontent.com/junaidwahid/junaidwahid.github.io/master/_posts/true.png)
 
 
-You might be wondering why I haven't started discussing the problems of few-shot learning yet. Don't worry, I'm not avoiding the topic. Similar to the phrase "Attention is all you need", I would like to say that "More reading is what you need right now".
-
-Before we delve into the issues, let's first define few-shot learning and the method we use to choose models. To do this, we divide our dataset into a training set and a validation set. We use the training set to train an algorithm called "A" while considering random factors like network initialization or the order of training examples. We refer to these factors as "R". In order to achieve better performance, we aim for the validation loss to be low, which is the expected mean loss on multiple folds, similar to k-fold.
+Before we delve into the problems of few shot learning, let's first define few-shot learning and the method we use to choose models. To do this, we divide our dataset into a training set and a validation set. We use the training set to train an algorithm called "A" while considering random factors like network initialization or the order of training examples. We refer to these factors as "R". In order to achieve better performance, we aim for the validation loss to be low, which is the expected mean loss on multiple folds, similar to k-fold.
 
 ![mode selection](https://raw.githubusercontent.com/junaidwahid/junaidwahid.github.io/master/_posts/model_selection.png)
 
-There are two ways to perform few-shot learning: cross-validation and minimum description length. The former is well-known, so I won't go into detail, but the latter is also commonly used for model selection despite being less well-known.
+There are two ways to perform few-shot learning: **cross-validation** and **minimum description length**. The former is well-known, so I won't go into detail, but the latter is also commonly used for model selection despite being less well-known.
 
 Minimum Description Length, or MDL, is a criterion used for model selection that balances the model's complexity with its ability to fit the data. The aim of MDL is to find the simplest model that can accurately represent the data.
 
@@ -63,7 +61,7 @@ In simpler terms, we want to encode information using as few bits as possible. T
 
 ## Problems with Few Shot Learning
 
-Although models like GPT-3 and other big language models are impressive, every good thing comes with a hidden cost. Few-shot learning seems like the ultimate solution to the problem of limited data in everyday machine learning pipelines, but it has underlying issues that need to be reviewed. Recently, a paper by Nitin published in NeuralIPS has explored the problems of few-shot learning. I highly encourage you to read that paper after this blog to gain a deeper understanding. In the upcoming sections, we will discuss the problems mentioned in the paper and how much they can affect the model's performance. The meme below provides a summary of what we will be discussing!
+Although models like GPT-3 and other big language models are impressive but every good thing comes with a hidden cost. Few-shot learning seems like the ultimate solution to the problem of limited data in everyday machine learning pipelines, but it has underlying issues that need to be reviewed. Recently, a paper by [Ethan Perez et. al](https://arxiv.org/abs/2105.11447) has explored the problems of few-shot learning. I highly encourage you to read that paper after this blog to gain a deeper understanding. In the upcoming sections, we will discuss the problems mentioned in the paper and how much they can affect the model's performance. The meme below provides a summary of what we will be discussing!
 
 ![problems](https://raw.githubusercontent.com/junaidwahid/junaidwahid.github.io/master/_posts/chopper.png)
 
@@ -72,11 +70,18 @@ Although models like GPT-3 and other big language models are impressive, every g
 
 When it comes to training language models with limited data, prompt selection is a crucial factor for achieving good performance. The right prompt can provide the model with more context and help it generate better results. However, in the case of true few-shot learning, where the amount of data is severely limited, prompt selection becomes even more important.
 
-In the mentioned paper, researchers have explored different techniques to evaluate the effectiveness of prompt selection. They found that, on average, test accuracy of prompts chosen by cross-validation (CV) and minimum description length (MDL) were very far from the best prompt.  Even when comparing the results of a selected prompt to the average of some random prompts, the accuracy was not significant in most cases. This pattern was consistent across all model sizes.
+In the mentioned paper, researchers have explored different techniques to evaluate the effectiveness of prompt selection. They found that, on average, test accuracy of prompts chosen by cross-validation (CV) and minimum description length (MDL) were very far from the best prompt.  Even when comparing the results of a selected prompt to the average of some random prompts, the accuracy was not significant in most cases. This pattern was consistent across all model sizes. The mentioned explanation can be varified by generated figure.
 
-They further studied the accuray of choosing of best prompt. The results were not different and they faced the same fate and number of times models chose the best was significantly low. 
+![prob111](https://raw.githubusercontent.com/junaidwahid/junaidwahid.github.io/master/_posts/probb11.JPG)
+
+
+
+
+They further studied the accuray of choosing the best prompt. The results were not different and they faced the same fate and number of times models chose the best was significantly low. 
 
 **What does this mean?** First, we should not expect to always get the best prompt or even a prompt that is close to its performance. Second, these results suggest that previous studies may have overestimated the performance of few-shot learning.
+
+
 
 
 ### 2. How reliably does prompt selection improve over the average prompt?
@@ -84,14 +89,20 @@ One key question that arises is whether it is possible to improve performance wi
 
 The experiment in the paper revealed that CV/MDL-chosen prompts showed high variance in test accuracy relative to the average prompt, and for most model sizes, the chance of improving over the average, randomly-chosen prompt was only 56% for CV and 55% for MDL. The authors noted that the performance of prompt selection formed a long-tailed distribution, with a 27% chance that prompt selection would cause an accuracy drop of 13% for all model sizes and CV/MDL alike. Additionally, the tails grew heavier as model size increased, indicating that the ability to reliably choose good prompts degraded as models grew bigger and generalized better. The surprising finding was dropping of the model accuracy by 40% with 5% probability. These number disclosed the earlier overestimation in the area of few shot learning thats has been relied blindly over the years with little focus on its performance on actual true few shot learning setting.
 
+![prob2](https://raw.githubusercontent.com/junaidwahid/junaidwahid.github.io/master/_posts/prob222.JPG)
+
+
 **What could be the possible explanation for these results?** One possible explanation for this trend is that larger models have the capacity to draw more complex decision boundaries, requiring more examples to estimate the true expected loss on unseen examples. Therefore, scaling validation sets along with model size may be necessary. Overall, the limited average-case gains from prompt selection could not be expected with any reasonable confidence in the true few-shot setting, and this problem would only become worse with larger models.
+
 
 ### 3. Does prompt selection improve with more labeled examples?
 One can argue, that may be increasing the number of data examples may increase the performance and that argument makes sense as it is evident even in case of supervised learning. To test the argument,the paper replicated the experiment with different amount of data in increasing order and examined how well prompt selection methods performs. They also tested whether increasing the amount of compute (i.e., the amount of computational resources used) would improve prompt selection performance.
 
 **So, does it increase the performance?** Surprisingly, even with more labeled examples, prompt selection methods did not consistently perform better than simply choosing examples based on few examples. Additionally, increasing the amount of compute used to estimate the performance of different prompts did not improve the accuracy of prompt selection beyond a certain point.These findings are surprising because prompt design has been thought to be most promising in the true few-shot setting, where there is very little labeled data available. However, these results suggest that prompt selection is still difficult even with more labeled data, greatly undermining the potential value of prompts in the true few-shot setting.
 
-### 3. To what extent are chosen prompts specific to the model?
+![prob3](https://raw.githubusercontent.com/junaidwahid/junaidwahid.github.io/master/_posts/prob33.JPG)
+
+### 4. To what extent are chosen prompts specific to the model?
 
 When it comes to language modeling tasks, one of the most critical things is choosing the right prompts. But how do we know if the prompts we choose are specific to the model we're using, or if they can be used for other models too? That's was one the experiment of the paper.
 
