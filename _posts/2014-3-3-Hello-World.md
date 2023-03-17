@@ -106,19 +106,26 @@ One can argue, that may be increasing the number of data examples may increase t
 
 When it comes to language modeling tasks, one of the most critical things is choosing the right prompts. But how do we know if the prompts we choose are specific to the model we're using, or if they can be used for other models too? That's was one the experiment of the paper.
 
-The researchers used something called prompt transfer to test whether the prompts chosen using cross-validation/minimum description length (CV/MDL) techniques were tailored to specific models or not. Prompt transfer involves using a prompt chosen for one model to make predictions using another model. The accuracy of these predictions is then evaluated to determine whether the prompts are working well or not.
+The researchers used something called prompt transfer to test whether the prompts chosen using cross-validation/minimum description length techniques were tailored to specific models or not. Prompt transfer involves using a prompt chosen for one model to make predictions using another model. The accuracy of these predictions is then evaluated to determine whether the prompts are working well or not.
 
-**So what did the study find?** Well, it turns out that prompts chosen based on test accuracy tend to work well for models of similar sizes. However, when using CV and MDL-selected prompts, things can get a little trickier. In fact, the researchers found that these prompts tend to underperform when compared to the best prompts and don't consistently improve accuracy across different tasks and model sizes.
+**So what did the study find?** Well, it turns out that prompts chosen based on test accuracy tend to work well for models of similar sizes. The researchers also found that these prompts tend to underperform when compared to the best prompts and don't consistently improve accuracy across different tasks and model sizes.
+
+![prob4](https://raw.githubusercontent.com/junaidwahid/junaidwahid.github.io/master/_posts/prob4.JPG)
+
 
 **What does this mean for practitioners?** Essentially, it suggests that prompts selected using CV/MDL techniques may not be tailored to individual models, and may not be the best prompts to use for NLP tasks. Instead, it's important to choose prompts that are specifically designed for the model you're using, or to consider other techniques for prompt selection. By doing so, we can ensure that our  models are as accurate and effective as possible.
 
-### 4. Is prompt selection challenging on other tasks?
+### 5. Is prompt selection challenging on other tasks?
 
 Choosing the right prompts is crucial for language modeling tasks, but is it equally challenging for all tasks? The mentioned paper also ought to answer this question by investigating the effectiveness of prompt selection on three different NLP tasks: Recognizing Textual Entailment (RTE), CommitmentBank (CB), and Word-in-Context (WiC). The authors used prompts chosen by cross-validation (CV), minimum description length (MDL), and test accuracy to evaluate the accuracy of the models.
 
-**What did the study find about the effectiveness of prompt selection?** The study found that the results were similar to their findings on the LAMA task, where CV/MDL-chosen prompts tended to obtain lower average accuracy than those chosen based on test accuracy. This trend was consistent across all tasks and model sizes, even when selecting fewer prompts. Additionally, the accuracy of CV/MDL-chosen prompts varied widely across tasks and model sizes, often resulting in worse-than-average prompts. To further examine the variance in chosen prompt accuracy, the authors calculated the chance that prompt selection would obtain various accuracy gains over the average prompt. They found that the accuracy gains were highly dispersed, often negative, and not consistently achieved. Overall, the study concludes that prompt selection is challenging in general, and the earlier findings on LAMA tasks apply to other kinds of tasks as well.
+**What did the study find about the effectiveness of prompt selection?** The study found that the results were similar to their findings on the original task, where CV/MDL-chosen prompts tended to obtain lower average accuracy than those chosen based on test accuracy. This trend was consistent across all tasks and model sizes, even when selecting fewer prompts. Additionally, the accuracy of CV/MDL-chosen prompts varied widely across tasks and model sizes, often resulting in worse-than-average prompts. To further examine the variance in chosen prompt accuracy, the authors calculated the chance that prompt selection would obtain various accuracy gains over the average prompt. They found that the accuracy gains were highly dispersed, often negative, and not consistently achieved. Overall, the study concludes that prompt selection is challenging in general, and the earlier findings on original tasks apply to other kinds of tasks as well.
 
-### 5. True Few-Shot Hyperparameter Selection
+![prob5](https://raw.githubusercontent.com/junaidwahid/junaidwahid.github.io/master/_posts/prob55.JPG)
+
+
+
+### 6. True Few-Shot Hyperparameter Selection
 **Are you ready for a surprising fact?** Even when you choose the best hyperparameters for a model, it may not perform well on tasks that require few-shot learning. In other words, even the best model may not give you the results you want when you have limited data to train it on. This is the conclusion reached by the authors of a recent paper that focused on ADAPET, a few-shot model that was considered one of the top-performing models according to SuperGLUE, a standard benchmark in natural language processing (NLP).
 
 The study evaluated the impact of using validation examples to choose two hyperparameters: the early stopping checkpoint and fraction of words masked for the masked LM objective. The results showed that across all SuperGLUE tasks, cross-validation/minimum description length (CV/MDL) hyperparameter selection performed similarly or worse than average hyperparameters randomly chosen, and several points worse than the best hyperparameters. In the true few-shot setting, the average SuperGLUE performance of ADAPET dropped below that of earlier methods, highlighting how the use of validation examples can give the false appearance of progress in few-shot learning.
