@@ -30,7 +30,7 @@ Prompt engineering is like giving GPT-3 a topic to write about and some examples
 
 Here is one example of few shot learning, where we have given task description, some examples and finally a prompt the model needs to complete.
 
-![Few shot learning]({{site.baseurl}}/_posts/fewshot.png)
+![fewshot](https://raw.githubusercontent.com/junaidwahid/junaidwahid.github.io/master/_posts/fewshot.png)
 
 
 ### True Few shot learning
