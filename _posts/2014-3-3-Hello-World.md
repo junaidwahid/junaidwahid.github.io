@@ -20,9 +20,9 @@ Let's look at some examples to understand the concept better. Imagine you want t
 In more technical terms, few-shot learning involves training a model on a small number of labeled examples (or "shots") of each task or class. The model is then tested on a set of novel tasks or classes, each with only a few examples, to evaluate its ability to generalize.
 
 ### Language models and Prompt engineering
-Have you ever talked to a computer? You might be thinking, "Wait, computers can't talk, can they?" But what if I told you that there are machines out there that can communicate with humans just like we do with each other? These machines are called language models, and they are taking the world by storm and one of the example is indeed ChatGPT.
+Everyone used Siri or Google Assistant. These early voice assistants provided some helpful features, but they were often limited in their capabilities and didn't provide particularly engaging interactions. However, with the emergence of tools like ChatGpt, we are now seeing a new level of sophistication in language understanding and generation. These models have the ability to engage in conversations that feel much more human-like and natural than anything we've seen before. In the back of these tools, the models like GPT-3 is being used and these are called language models.
 
-Language models are trained on vast amounts of text data, such as books, articles, and websites. They learn the rules of grammar, syntax, and semantics from this data and use it to generate human-like text. It's like teaching a machine how to speak our language by exposing it to millions of examples of how we use words and sentences.
+Language models are actually trained on vast amounts of text data, such as books, articles, and websites. They learn the rules of grammar, syntax, and semantics from this data and use it to generate human-like text. It's like teaching a machine how to speak our language by exposing it to millions of examples of how we use words and sentences.
 
 One of the most famous language models out there is called GPT-3. It's like a super-smart computer that can write essays, answer questions, and even write code. But here's the catch: it needs to be told what to write about. That's where prompt engineering comes in.
 
