@@ -37,14 +37,14 @@ Here is one example of few shot learning, where we have given task description, 
 Now that we've covered the basics of language models, let's dive into what true few-shot learning really means(yes there is difference between few shot learning and "true" few shot learning"). Previous research has classified few-shot learning into three different categories (see Table 3). The first is the Data-Rich setting, which is essentially a supervised learning pipeline where we have access to a large amount of training and validation examples. The second is the Multi-Distribution setting, where we have access to a small dataset of many similar distributions. The last category is the Tuned Few-shot setting, where we have access to a large validation set that we can use to fine-tune our task.
 
 But, wait a minute... if we go back to our earlier definition of few-shot learning, can we really call these methods "few-shot learning"? The answer is no. That's where true few-shot learning comes in! We don't need many similar small datasets from other distributions, nor do we need a large training or validation set. All we need are just a few examples to perform the desired task!
-![true]({{site.baseurl}}/_posts/true.png)
+![true](https://raw.githubusercontent.com/junaidwahid/junaidwahid.github.io/master/_posts/true.png)
 
 
 You might be wondering why I haven't started discussing the problems of few-shot learning yet. Don't worry, I'm not avoiding the topic. Similar to the phrase "Attention is all you need", I would like to say that "More reading is what you need right now".
 
 Before we delve into the issues, let's first define few-shot learning and the method we use to choose models. To do this, we divide our dataset into a training set and a validation set. We use the training set to train an algorithm called "A" while considering random factors like network initialization or the order of training examples. We refer to these factors as "R". In order to achieve better performance, we aim for the validation loss to be low, which is the expected mean loss on multiple folds, similar to k-fold.
 
-![mode selection ]({{site.baseurl}}/_posts/model_selection.png)
+![mode selection](https://raw.githubusercontent.com/junaidwahid/junaidwahid.github.io/master/_posts/model_selection.png)
 
 There are two ways to perform few-shot learning: cross-validation and minimum description length. The former is well-known, so I won't go into detail, but the latter is also commonly used for model selection despite being less well-known.
 
@@ -62,7 +62,8 @@ In simpler terms, we want to encode information using as few bits as possible. T
 
 Although models like GPT-3 and other big language models are impressive, every good thing comes with a hidden cost. Few-shot learning seems like the ultimate solution to the problem of limited data in everyday machine learning pipelines, but it has underlying issues that need to be reviewed. Recently, a paper by Nitin published in NeuralIPS has explored the problems of few-shot learning. I highly encourage you to read that paper after this blog to gain a deeper understanding. In the upcoming sections, we will discuss the problems mentioned in the paper and how much they can affect the model's performance. The meme below provides a summary of what we will be discussing!
 
-![problems]({{site.baseurl}}/_posts/american-chopper-argument (1).png)
+![problems](https://raw.githubusercontent.com/junaidwahid/junaidwahid.github.io/master/_posts/chopper.png)
+
 
 ### 1. How well does prompt selection do in true few-shot learning?
 
