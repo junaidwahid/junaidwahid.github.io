@@ -126,26 +126,31 @@ Choosing the right prompts is crucial for language modeling tasks, but is it equ
 
 
 ### 6. True Few-Shot Hyperparameter Selection
-**Are you ready for a surprising fact?** Even when you choose the best hyperparameters for a model, it may not perform well on tasks that require few-shot learning. In other words, even the best model may not give you the results you want when you have limited data to train it on. This is the conclusion reached by the authors of a recent paper that focused on ADAPET, a few-shot model that was considered one of the top-performing models according to SuperGLUE, a standard benchmark in natural language processing (NLP).
+**Are you ready for a surprising fact?** Even when you choose the best hyperparameters for a model, it may not perform well on tasks that require few-shot learning. In other words, even the best model may not give you the results you want when you have limited data to train it on. This is the conclusion reached by the authors. The authours used ADAPET(a few shot learning model) and tested it on suite of task(SuperGLUE).
 
-The study evaluated the impact of using validation examples to choose two hyperparameters: the early stopping checkpoint and fraction of words masked for the masked LM objective. The results showed that across all SuperGLUE tasks, cross-validation/minimum description length (CV/MDL) hyperparameter selection performed similarly or worse than average hyperparameters randomly chosen, and several points worse than the best hyperparameters. In the true few-shot setting, the average SuperGLUE performance of ADAPET dropped below that of earlier methods, highlighting how the use of validation examples can give the false appearance of progress in few-shot learning.
+The experiment evaluated the impact of using validation examples to choose two hyperparameters: the early stopping checkpoint and fraction of words masked for the masked Language model objective. The results showed that across all tasks, cross-validation/minimum description length hyperparameter selection performed similarly or worse than average hyperparameters randomly chosen, and several points worse than the best hyperparameters. In the true few-shot setting, the average SuperGLUE performance of ADAPET dropped below that of earlier methods, highlighting how the use of validation examples can give the false appearance of progress in few-shot learning.
 
-**So, what does this mean?** While prompt selection has been shown to be challenging in low data regimes, this study demonstrates that model selection can also be just as challenging. Despite the use of the best hyperparameters, a model may not perform as expected in few-shot learning scenarios. These findings shed light on the need for further research and development in this field to improve few-shot learning performance in the future.
+
+**So, what does this mean?** While prompt selection has been shown to be challenging in low data regimes, this study demonstrates that hyperparameters selection can also be just as challenging. Despite the use of the best hyperparameters, a model may not perform as expected in few-shot learning scenarios. These findings shed light on the need for further research and development in this field to improve few-shot learning performance in the future.
 
 ## Takeaways
 
 Here are some takeaways from this blog:
 
-1.Few-shot learning has underlying issues that need to be reviewed, as highlighted in a recent paper by Nitin.
+_1.Few-shot learning has underlying issues that need to be reviewed._
 
-2.Prompt selection is crucial for achieving good performance when training language models with limited data.
+_2.Prompt selection is crucial for achieving good performance when training language models with limited data._
 
-3.Researchers found that choosing the best prompt is challenging and previous studies may have overestimated the performance of few-shot learning.
+_3.Researchers found that choosing the best prompt is challenging and previous studies may have overestimated the performance of few-shot learning._
 
-4.Prompt selection showed high variance in test accuracy relative to the average prompt, and the ability to reliably choose good prompts degraded as models grew bigger and generalized better.
+_4.Prompt selection showed high variance in test accuracy relative to the average prompt, and the ability to reliably choose good prompts degraded as models grew bigger and generalized better.
 
 5.Prompt selection is still difficult even with more labeled data, greatly undermining the potential value of prompts in the true few-shot setting.
 
 6.The prompts are model-specific, and prompt selection methods did not perform well across models.
 
-7.The findings suggest that prompt selection is a challenging problem that needs more attention and research to improve its performance.
+7.The findings suggest that prompt selection is a challenging problem that needs more attention and research to improve its performance._
+
+
+## References
+[[1] Ethan Perez, Douwe Kiela, and Kyunghyun Cho. 2021. True few-shot learning with language models. In Advances in Neural Information Processing Systems 34: Annual Conference on Neural Information Processing Systems (NeurIPS’21), Marc’Aurelio Ranzato, Alina Beygelzimer, Yann N. Dauphin, Percy Liang, and Jennifer Wortman Vaughan (Eds.). 11054–11070.](https://proceedings.neurips.cc/paper/2021/hash/5c04925674920eb58467fb52ce4ef728-Abstract.html "paper")
