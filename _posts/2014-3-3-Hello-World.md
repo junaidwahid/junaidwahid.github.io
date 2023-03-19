@@ -87,7 +87,9 @@ One key question that arises is whether it is possible to improve performance wi
 
 The experiment in the paper revealed that CV/MDL-chosen prompts showed high variance in test accuracy relative to the average prompt, and for most model sizes, the chance of improving over the average, randomly-chosen prompt was only 56% for CV and 55% for MDL. The authors noted that the performance of prompt selection formed a long-tailed distribution, with a 27% chance that prompt selection would cause an accuracy drop of 13% for all model sizes and CV/MDL alike. Additionally, the tails grew heavier as model size increased, indicating that the ability to reliably choose good prompts degraded as models grew bigger and generalized better. The surprising finding was dropping of the model accuracy by 40% with 5% probability. These number disclosed the earlier overestimation in the area of few shot learning thats has been relied blindly over the years with little focus on its performance on actual true few shot learning setting.
 
-![prob2](https://raw.githubusercontent.com/junaidwahid/junaidwahid.github.io/master/_posts/prob222.JPG)
+<p style="text-align:center;">
+  <img src="https://raw.githubusercontent.com/junaidwahid/junaidwahid.github.io/master/_posts/prob222.JPG"/>
+</p>
 
 
 **What could be the possible explanation for these results?** One possible explanation for this trend is that larger models have the capacity to draw more complex decision boundaries, requiring more examples to estimate the true expected loss on unseen examples. Therefore, scaling validation sets along with model size may be necessary. Overall, the limited average-case gains from prompt selection could not be expected with any reasonable confidence in the true few-shot setting, and this problem would only become worse with larger models.
@@ -98,7 +100,10 @@ One can argue, that may be increasing the number of data examples may increase t
 
 **So, does it increase the performance?** Surprisingly, even with more labeled examples, prompt selection methods did not consistently perform better than simply choosing prompts based on few examples. Additionally, increasing the amount of compute used to estimate the performance of different prompts did not improve the accuracy of prompt selection beyond a certain point.These findings are surprising because prompt design has been thought to be most promising in the true few-shot setting, where there is very little labeled data available. However, these results suggest that prompt selection is still difficult even with more labeled data, greatly undermining the potential value of prompts in the true few-shot setting.
 
-![prob3](https://raw.githubusercontent.com/junaidwahid/junaidwahid.github.io/master/_posts/prob33.JPG)
+<p style="text-align:center;">
+  <img src="https://raw.githubusercontent.com/junaidwahid/junaidwahid.github.io/master/_posts/prob33.JPG"/>
+</p>
+
 
 ### 4. To what extent are chosen prompts specific to the model?
 
@@ -108,7 +113,10 @@ The researchers used something they call prompt transfer to test whether the pro
 
 **So what did the study find?** Well, it turns out that prompts chosen based on test accuracy tend to work well for models of similar sizes. The researchers also found that these prompts tend to underperform when compared to the best prompts and don't consistently improve accuracy across different tasks and model sizes.
 
-![prob4](https://raw.githubusercontent.com/junaidwahid/junaidwahid.github.io/master/_posts/prob4.JPG)
+<p style="text-align:center;">
+  <img src="https://raw.githubusercontent.com/junaidwahid/junaidwahid.github.io/master/_posts/prob4.JPG"/>
+</p>
+
 
 
 **What does this mean for practitioners?** Essentially, it suggests that prompts selected using CV/MDL techniques may not be tailored to individual models, and may not be the best prompts to use for NLP tasks. Instead, it's important to choose prompts that are specifically designed for the model you're using, or to consider other techniques for prompt selection. By doing so, we can ensure that our  models are as accurate and effective as possible.
@@ -119,8 +127,9 @@ Choosing the right prompts is crucial for language modeling tasks, but is it equ
 
 **What did the study find about the effectiveness of prompt selection?** The study found that the results were similar to their findings on the original task, where CV/MDL-chosen prompts tended to obtain lower average accuracy than best prompt. This trend was consistent across all tasks and model sizes. Additionally, the accuracy of CV/MDL-chosen prompts varied widely across tasks and model sizes, often resulting in worse-than-average prompts. To further examine the variance in chosen prompt accuracy, the authors calculated the chance that prompt selection would obtain various accuracy gains over the average prompt. They found that the accuracy gains were highly dispersed, often negative, and not consistently achieved. Overall, the study concludes that prompt selection is challenging in general, and the earlier findings on original tasks apply to other kinds of tasks as well.
 
-![prob5](https://raw.githubusercontent.com/junaidwahid/junaidwahid.github.io/master/_posts/prob55.JPG)
-
+<p style="text-align:center;">
+  <img src="https://raw.githubusercontent.com/junaidwahid/junaidwahid.github.io/master/_posts/prob55.JPG"/>
+</p>
 
 
 ### 6. True Few-Shot Hyperparameter Selection
@@ -141,7 +150,7 @@ _2.Prompt selection is crucial for achieving good performance when training lang
 
 _3.Choosing the best prompt is challenging and previous studies may have overestimated the performance of few-shot learning._
 
-_4.Prompt selection showed high variance in test accuracy relative to the average random prompt, and the ability to reliably choose good prompts degraded as models grew bigger and generalized better.
+_4.Prompt selection showed high variance in test accuracy relative to the average random prompt, and the ability to reliably choose good prompts degraded as models grew bigger and generalized better._
 
 _5.Prompt selection is still difficult even with more labeled data, greatly undermining the potential value of prompts in the true few-shot setting._
 
