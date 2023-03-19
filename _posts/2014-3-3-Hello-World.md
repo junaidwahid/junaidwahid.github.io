@@ -8,7 +8,7 @@ It seems that the word "ChatGpt" is on everyone's lips these days, no matter whe
 
 In this article, we will begin by providing a basic understanding of few-shot learning, and explore some of the challenges that arise in this domain. It is important to note that a prerequisite for reading this article is a fundamental understanding of machine learning concepts and a willingness to explore new ideas.
 
-By the end of this article, readers will have a deeper understanding of the unique challenges posed by few-shot learning, and the potential applications of this technology. We hope this article will serve as a useful guide for those interested in exploring this fascinating field.
+By the end of this article, readers will have a deeper understanding of the unique challenges posed by few-shot learning, and its limitations. We hope this article will serve as a useful guide for those interested in exploring this fascinating field.
 
 ### Few Shot learning
 Traditional machine learning models often require large amounts of labeled data to achieve high performance on a given task, such as sentiment analysis or named entity recognition. However, collecting such large amounts of labeled data can be difficult or even impossible, especially for low-resource languages or domains.
