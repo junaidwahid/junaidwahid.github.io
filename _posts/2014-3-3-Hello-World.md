@@ -34,10 +34,7 @@ Here is one example of few shot learning, where we have given task description, 
 
 
 ### True Few shot learning
-Now that we've covered the basics of language models, let's dive into what true few-shot learning really means(yes there is difference between few shot learning and "true" few shot learning). Previous research has classified few-shot learning into three different [categories](https://raw.githubusercontent.com/junaidwahid/junaidwahid.github.io/master/_posts/true.png). 
-	1.The first is the Data-Rich setting, which is essentially a supervised learning pipeline where we have access to a large amount of training and validation examples. 
-	2.The second is the Multi-Distribution setting, where we have access to a small dataset of many similar distributions. 
-    3.The last category is the Tuned Few-shot setting, where we have access to a large validation set that we can use to fine-tune our task.
+Now that we've covered the basics of language models, let's dive into what true few-shot learning really means(yes there is difference between few shot learning and "true" few shot learning). Previous research has classified few-shot learning into three different categories. 1)The first is the Data-Rich setting, which is essentially a supervised learning pipeline where we have access to a large amount of training and validation examples. 2) The second is the Multi-Distribution setting, where we have access to a small dataset of many similar distributions. 3) The last category is the Tuned Few-shot setting, where we have access to a large validation set that we can use to fine-tune our task.
 
 But, wait a minute... if we go back to our earlier definition of few-shot learning, can we really call these methods "few-shot learning"? The answer is no. That's where true few-shot learning comes in! We don't need many similar small datasets from other distributions, nor do we need a large training or validation set. All we need are just a few examples to perform the desired task!
 ![true](https://raw.githubusercontent.com/junaidwahid/junaidwahid.github.io/master/_posts/true.png)
