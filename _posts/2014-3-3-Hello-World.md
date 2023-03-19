@@ -4,7 +4,7 @@ title: ''
 published: true
 ---
 
-It seems that the word "ChatGpt" is on everyone's lips these days, no matter where you go or who you talk to. But before we get carried away with all the hype, let's take a closer look at some of the challenges that come with these fancy language models. Don't worry if none of this makes sense at first - I'll be your trusty navigator and guide you through the murky waters of language model problems
+It seems that the word "ChatGpt" is on everyone's lips these days, no matter where you go or who you talk to. But before we get carried away with all the hype, let's take a closer look at some of the challenges that come with these fancy language models. Don't worry if none of this makes sense at first - I'll explain all the terms in the detail.
 
 In this article, we will begin by providing a basic understanding of few-shot learning, and explore some of the challenges that arise in this domain. It is important to note that a prerequisite for reading this article is a fundamental understanding of machine learning concepts and a willingness to explore new ideas.
 
@@ -44,15 +44,9 @@ Before we delve into the problems of few shot learning, let's first define few-s
 
 ![mode selection](https://raw.githubusercontent.com/junaidwahid/junaidwahid.github.io/master/_posts/model_selection.png)
 
-There are two ways to perform few-shot learning: **cross-validation** and **minimum description length**. The former is well-known, so I won't go into detail, but the latter is also commonly used for model selection despite being less well-known.
+There are two ways to perform few-shot learning: **cross-validation** and **minimum description length**. The former is well-known, but the latter is also commonly used for model selection despite being less well-known.
 
 Minimum Description Length, or MDL, is a criterion used for model selection that balances the model's complexity with its ability to fit the data. The aim of MDL is to find the simplest model that can accurately represent the data.
-
-When using MDL, we take an expectation over the possible values of "k", which determines how the dataset is split between the training and validation sets. Here's a pseudo code to understand MDL better:
-
-	1. Divide the dataset into "k" folds.
-	2. Use "k"th fold for testing and the rest for training.
-	3. Repeat the process for all "k".
 
 In simpler terms, we want to encode information using as few bits as possible. Therefore, models that are more compressible generally lead to better generalization and, in turn, better models.
 
