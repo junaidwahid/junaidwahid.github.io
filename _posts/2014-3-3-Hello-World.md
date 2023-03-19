@@ -68,8 +68,10 @@ Although models like GPT-3 and other big language models are impressive but ever
 When it comes to training language models with limited data, prompt selection is a crucial factor for achieving good performance. The right prompt can provide the model with more context and help it generate better results. However, in the case of true few-shot learning, where the amount of data is severely limited, prompt selection becomes even more important.
 
 In the mentioned paper, researchers have explored different techniques to evaluate the effectiveness of prompt selection. They found that, on average, test accuracy of prompts chosen by cross-validation (CV) and minimum description length (MDL) were very far from the best prompt.  Even when comparing the results of a selected prompt to the average of some random prompts, the accuracy was not significant in most cases. This pattern was consistent across all model sizes. The mentioned explanation can be varified by generated figure.
-<p align="center">
-  <img src="https://raw.githubusercontent.com/junaidwahid/junaidwahid.github.io/master/_posts/probb11.JPG" />
+
+
+<p style="text-align:center;">
+  <img src="https://raw.githubusercontent.com/junaidwahid/junaidwahid.github.io/master/_posts/probb11.JPG" alt="Image">
 </p>
 
 
