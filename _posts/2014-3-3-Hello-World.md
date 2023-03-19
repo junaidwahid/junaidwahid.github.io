@@ -67,7 +67,7 @@ Although models like GPT-3 and other big language models are impressive but ever
 
 When it comes to training language models with limited data, prompt selection is a crucial factor for achieving good performance. The right prompt can provide the model with more context and help it generate better results. However, in the case of true few-shot learning, where the amount of data is severely limited, prompt selection becomes even more important.
 
-In the mentioned paper, researchers have explored different techniques to evaluate the effectiveness of prompt selection. They found that, on average, test accuracy of prompts chosen by cross-validation (CV) and minimum description length (MDL) were very far from the best prompt.  Even when comparing the results of a selected prompt to the average of some random prompts, the accuracy was not significant in most cases. This pattern was consistent across all model sizes. The mentioned explanation can be varified by generated figure.
+In the mentioned paper, researchers have explored different techniques to evaluate the effectiveness of prompt selection. They found that, on average, test accuracy of prompts chosen by cross-validation (CV) and minimum description length (MDL) were very far from the best prompt.  Even when comparing the results of a selected prompt to the average of some random prompts, the accuracy was not significant in most cases. This pattern was consistent across all model sizes. The mentioned explanation can be verified by the following figure.
 <p style="text-align:center;">
   <img src="https://raw.githubusercontent.com/junaidwahid/junaidwahid.github.io/master/_posts/probb11.JPG"/>
 </p>
@@ -75,8 +75,7 @@ In the mentioned paper, researchers have explored different techniques to evalua
 
 
 
-
-They further studied the accuray of choosing the best prompt. The results were not different and they faced the same fate and number of times models chose the best was significantly low. 
+They further studied the accuray of choosing the best prompt. The results were not different and they faced the same fate and number of times models chose the best prompt was significantly low. 
 
 **What does this mean?** First, we should not expect to always get the best prompt or even a prompt that is close to its performance. Second, these results suggest that previous studies may have overestimated the performance of few-shot learning.
 
@@ -97,7 +96,7 @@ The experiment in the paper revealed that CV/MDL-chosen prompts showed high vari
 ### 3. Does prompt selection improve with more labeled examples?
 One can argue, that may be increasing the number of data examples may increase the performance and that argument makes sense as it is evident even in case of supervised learning. To test the argument,the paper replicated the experiment with different amount of data in increasing order and examined how well prompt selection methods performs. They also tested whether increasing the amount of compute (i.e., the amount of computational resources used) would improve prompt selection performance.
 
-**So, does it increase the performance?** Surprisingly, even with more labeled examples, prompt selection methods did not consistently perform better than simply choosing examples based on few examples. Additionally, increasing the amount of compute used to estimate the performance of different prompts did not improve the accuracy of prompt selection beyond a certain point.These findings are surprising because prompt design has been thought to be most promising in the true few-shot setting, where there is very little labeled data available. However, these results suggest that prompt selection is still difficult even with more labeled data, greatly undermining the potential value of prompts in the true few-shot setting.
+**So, does it increase the performance?** Surprisingly, even with more labeled examples, prompt selection methods did not consistently perform better than simply choosing prompts based on few examples. Additionally, increasing the amount of compute used to estimate the performance of different prompts did not improve the accuracy of prompt selection beyond a certain point.These findings are surprising because prompt design has been thought to be most promising in the true few-shot setting, where there is very little labeled data available. However, these results suggest that prompt selection is still difficult even with more labeled data, greatly undermining the potential value of prompts in the true few-shot setting.
 
 ![prob3](https://raw.githubusercontent.com/junaidwahid/junaidwahid.github.io/master/_posts/prob33.JPG)
 
@@ -105,7 +104,7 @@ One can argue, that may be increasing the number of data examples may increase t
 
 When it comes to language modeling tasks, one of the most critical things is choosing the right prompts. But how do we know if the prompts we choose are specific to the model we're using, or if they can be used for other models too? That's was one the experiment of the paper.
 
-The researchers used something called prompt transfer to test whether the prompts chosen using cross-validation/minimum description length techniques were tailored to specific models or not. Prompt transfer involves using a prompt chosen for one model to make predictions using another model. The accuracy of these predictions is then evaluated to determine whether the prompts are working well or not.
+The researchers used something they call prompt transfer to test whether the prompts chosen using cross-validation/minimum description length techniques were tailored to specific models or not. Prompt transfer involves using a prompt chosen for one model to make predictions using another model. The accuracy of these predictions is then evaluated to determine whether the prompts are working well or not.
 
 **So what did the study find?** Well, it turns out that prompts chosen based on test accuracy tend to work well for models of similar sizes. The researchers also found that these prompts tend to underperform when compared to the best prompts and don't consistently improve accuracy across different tasks and model sizes.
 
@@ -118,7 +117,7 @@ The researchers used something called prompt transfer to test whether the prompt
 
 Choosing the right prompts is crucial for language modeling tasks, but is it equally challenging for all tasks? The mentioned paper also ought to answer this question by investigating the effectiveness of prompt selection on three different NLP tasks: Recognizing Textual Entailment (RTE), CommitmentBank (CB), and Word-in-Context (WiC). The authors used prompts chosen by cross-validation (CV), minimum description length (MDL), and test accuracy to evaluate the accuracy of the models.
 
-**What did the study find about the effectiveness of prompt selection?** The study found that the results were similar to their findings on the original task, where CV/MDL-chosen prompts tended to obtain lower average accuracy than those chosen based on test accuracy. This trend was consistent across all tasks and model sizes, even when selecting fewer prompts. Additionally, the accuracy of CV/MDL-chosen prompts varied widely across tasks and model sizes, often resulting in worse-than-average prompts. To further examine the variance in chosen prompt accuracy, the authors calculated the chance that prompt selection would obtain various accuracy gains over the average prompt. They found that the accuracy gains were highly dispersed, often negative, and not consistently achieved. Overall, the study concludes that prompt selection is challenging in general, and the earlier findings on original tasks apply to other kinds of tasks as well.
+**What did the study find about the effectiveness of prompt selection?** The study found that the results were similar to their findings on the original task, where CV/MDL-chosen prompts tended to obtain lower average accuracy than best prompt. This trend was consistent across all tasks and model sizes. Additionally, the accuracy of CV/MDL-chosen prompts varied widely across tasks and model sizes, often resulting in worse-than-average prompts. To further examine the variance in chosen prompt accuracy, the authors calculated the chance that prompt selection would obtain various accuracy gains over the average prompt. They found that the accuracy gains were highly dispersed, often negative, and not consistently achieved. Overall, the study concludes that prompt selection is challenging in general, and the earlier findings on original tasks apply to other kinds of tasks as well.
 
 ![prob5](https://raw.githubusercontent.com/junaidwahid/junaidwahid.github.io/master/_posts/prob55.JPG)
 
@@ -127,7 +126,7 @@ Choosing the right prompts is crucial for language modeling tasks, but is it equ
 ### 6. True Few-Shot Hyperparameter Selection
 **Are you ready for a surprising fact?** Even when you choose the best hyperparameters for a model, it may not perform well on tasks that require few-shot learning. In other words, even the best model may not give you the results you want when you have limited data to train it on. This is the conclusion reached by the authors. The authours used ADAPET(a few shot learning model) and tested it on suite of task(SuperGLUE).
 
-The experiment evaluated the impact of using validation examples to choose two hyperparameters: the early stopping checkpoint and fraction of words masked for the masked Language model objective. The results showed that across all tasks, cross-validation/minimum description length hyperparameter selection performed similarly or worse than average hyperparameters randomly chosen, and several points worse than the best hyperparameters. In the true few-shot setting, the average SuperGLUE performance of ADAPET dropped below that of earlier methods, highlighting how the use of validation examples can give the false appearance of progress in few-shot learning.
+The experiment evaluated the impact of using validation examples to choose two hyperparameters: the early stopping checkpoint and fraction of words masked for the masked Language model objective. The results showed that across all tasks,hyperparameter selection by cross-validation/minimum description length performed similarly or worse than average randomly chosen hyperparameters, and several points worse than the best hyperparameters. In the true few-shot setting, the average SuperGLUE performance of ADAPET dropped below that of earlier methods, highlighting how the use of validation__ examples can give the false appearance of progress in few-shot learning.
 
 
 **So, what does this mean?** While prompt selection has been shown to be challenging in low data regimes, this study demonstrates that hyperparameters selection can also be just as challenging. Despite the use of the best hyperparameters, a model may not perform as expected in few-shot learning scenarios. These findings shed light on the need for further research and development in this field to improve few-shot learning performance in the future.
@@ -140,15 +139,15 @@ _1.Few-shot learning has underlying issues that need to be reviewed._
 
 _2.Prompt selection is crucial for achieving good performance when training language models with limited data._
 
-_3.Researchers found that choosing the best prompt is challenging and previous studies may have overestimated the performance of few-shot learning._
+_3.Choosing the best prompt is challenging and previous studies may have overestimated the performance of few-shot learning._
 
-_4.Prompt selection showed high variance in test accuracy relative to the average prompt, and the ability to reliably choose good prompts degraded as models grew bigger and generalized better.
+_4.Prompt selection showed high variance in test accuracy relative to the average random prompt, and the ability to reliably choose good prompts degraded as models grew bigger and generalized better.
 
-5.Prompt selection is still difficult even with more labeled data, greatly undermining the potential value of prompts in the true few-shot setting.
+_5.Prompt selection is still difficult even with more labeled data, greatly undermining the potential value of prompts in the true few-shot setting._
 
-6.The prompts are model-specific, and prompt selection methods did not perform well across models.
+_6.The prompts are model-specific, and prompt selection methods did not perform well across other models._
 
-7.The findings suggest that prompt selection is a challenging problem that needs more attention and research to improve its performance._
+_7.The findings suggest that prompt selection is a challenging problem that needs more attention and research to improve its performance._
 
 
 ## References
